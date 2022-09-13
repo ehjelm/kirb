@@ -16,9 +16,10 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Start kutsutaan kerran ennen ensimmäistä "ruudun" = framen päivitystä
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        Time.timeScale = 1f;
     }
 
     // Update kutsutaan kerran per frame

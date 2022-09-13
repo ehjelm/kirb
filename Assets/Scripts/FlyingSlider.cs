@@ -7,34 +7,23 @@ public class FlyingSlider : MonoBehaviour
 {
 
     private Slider slider;
-
-    public float fillSpeed = 0.5f;
-
-    public float targetProgress = 0;
+    public float targetProgress;
 
     private void Awake()
     {
         slider = gameObject.GetComponent<Slider>();
+        targetProgress = PlayerPrefs.GetInt("flyingScore");
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        if (slider.value < targetProgress)
-        {
-            slider.value += fillSpeed * Time.deltaTime;
-        }
+        slider.value = targetProgress;
     }
 
 
-    public void IncrementProgress(float newProgress)
+    /*public void IncrementProgress(float newProgress)
     {
-        targetProgress = slider.value + newProgress;
-    }
+        targetProgress =  newProgress;
+    }*/
 }

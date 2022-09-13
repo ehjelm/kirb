@@ -35,6 +35,8 @@ public class FlyingMovement : MonoBehaviour
         else if (other.gameObject.tag == "Score")
         {
             FindObjectOfType<GameManager>().IncreaseScore();
+
+            FindObjectOfType<GameManager>().FlyingScore();
         }
     }
 }

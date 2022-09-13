@@ -10,17 +10,22 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public GameObject playButton;
     public GameObject returnToMenu;
-    public GameObject quitGame;
     public GameObject gameOver;
     public GameObject pressPlay;
+    public Text foreverScore;
 
-    private int score;
+    public int score;
+    public int flyingScore;
+
 
     private void Awake()
     {
         Application.targetFrameRate = 60;
         gameOver.SetActive(false);
         Pause();
+
+        flyingScore = PlayerPrefs.GetInt("flyingScore");
+        foreverScore.text = flyingScore.ToString();
     }
 
     public void Play()
@@ -30,7 +35,6 @@ public class GameManager : MonoBehaviour
 
         playButton.SetActive(false);
         returnToMenu.SetActive(false);
-        quitGame.SetActive(false);
         gameOver.SetActive(false);
         pressPlay.SetActive(false);
 
@@ -59,13 +63,14 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         player.enabled = false;
+
+
     }
 
     public void GameOver()
     {
         gameOver.SetActive(true);
         returnToMenu.SetActive(true);
-        quitGame.SetActive(true);
         playButton.SetActive(true);
 
 
@@ -76,9 +81,16 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
-
-        
     }
 
-    
+    public void FlyingScore()
+    {
+
+        flyingScore++;
+        foreverScore.text = flyingScore.ToString();
+        PlayerPrefs.SetInt("flyingScore", flyingScore);
+
+    }
+
+
 }
