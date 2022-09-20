@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Swimming Level.unity
     guid: 75eab7c18bb0f124c897fe76f1f8226b
+  - enabled: 1
+    path: Assets/Scenes/Running Level.unity
+    guid: 098c7a6002de51246a9c80a5a4e46f32
+  - enabled: 1
+    path: Assets/Scenes/Race.unity
+    guid: 534d7495d70b29f49a4f145af1cde8af
   m_configObjects: {}

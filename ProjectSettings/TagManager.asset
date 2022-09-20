@@ -9,6 +9,8 @@ TagManager:
   - Score
   - Obstacle
   - SWMScoring
+  - Swim
+  - Fly
   layers:
   - Default
   - TransparentFX

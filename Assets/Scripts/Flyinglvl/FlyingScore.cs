@@ -7,11 +7,11 @@ public class FlyingScore : MonoBehaviour
     public float speed = 5f;
     private float leftEdge;
 
-
     private void Start()
     {
         //muuttaa ruututilan maailmatilaksi
         leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 1f;
+
     }
 
 
@@ -33,7 +33,9 @@ public class FlyingScore : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+          
             Destroy(gameObject);
+            
         }
 
 

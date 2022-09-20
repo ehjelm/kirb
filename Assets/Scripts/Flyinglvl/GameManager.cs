@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public int score;
     public int flyingScore;
 
+    public AudioSource batwings;
+
 
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
 
         flyingScore = PlayerPrefs.GetInt("flyingScore");
         foreverScore.text = flyingScore.ToString();
+
+        AudioSource batwings = GetComponent<AudioSource>();
     }
 
     public void Play()
@@ -41,7 +45,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         player.enabled = true;
 
-
+        batwings.Play();
 
 
         FlyingScore[] flyingScore = FindObjectsOfType<FlyingScore>();
@@ -63,6 +67,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         player.enabled = false;
+
+        batwings.Stop();
 
 
     }

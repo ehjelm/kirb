@@ -11,14 +11,18 @@ public class Score : MonoBehaviour
     public Text swimmingScoreText;
     public int swimmingScore;
 
-    public GameObject resetButton;
+    public Text runningScoreText;
+    public int runningScore;
 
+    public GameObject resetButton;
+    
 
     public Slider slider;
 
     private void Awake()
     {
         slider = gameObject.GetComponent<Slider>();
+        
     }
 
     // Start is called before the first frame update
@@ -30,13 +34,11 @@ public class Score : MonoBehaviour
         swimmingScore = PlayerPrefs.GetInt("swimmingScore");
         swimmingScoreText.text = swimmingScore.ToString();
 
+        runningScore = PlayerPrefs.GetInt("runningScore");
+        runningScoreText.text = runningScore.ToString();
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
 
     public void ResetProgress()
     {
@@ -48,7 +50,34 @@ public class Score : MonoBehaviour
         swimmingScore = 0;
         swimmingScoreText.text = flyingScore.ToString();
         PlayerPrefs.SetInt("swimmingScore", 0);
-        
+
+        runningScore = 0;
+        runningScoreText.text = runningScore.ToString();
+        PlayerPrefs.SetInt("runningScore", 0);
+
 
     }
+
+    public void SaveScore()
+    {
+        SaveSystem.SaveScore(this);
+    }
+
+
+
+    public void LoadScore()
+    {
+        ScoreData data = SaveSystem.LoadScore();
+
+        swimmingScore = data.swimScore;
+        runningScore = data.runScore;
+        flyingScore = data.flyScore;
+
+        flyingScoreText.text = flyingScore.ToString();
+        swimmingScoreText.text = flyingScore.ToString();
+        runningScoreText.text = runningScore.ToString();
+
+    }
+
+
 }
