@@ -9,6 +9,8 @@ public class FlyingSlider : MonoBehaviour
     private Slider slider;
     public float targetProgress;
 
+    public GameObject resetButton;
+
     private void Awake()
     {
         slider = gameObject.GetComponent<Slider>();
@@ -21,6 +23,10 @@ public class FlyingSlider : MonoBehaviour
         slider.value = targetProgress;
     }
 
+    public void ResetProgress()
+    {
+        targetProgress = 0;
+    }
 
     /*public void IncrementProgress(float newProgress)
     {

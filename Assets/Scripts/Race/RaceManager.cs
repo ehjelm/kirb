@@ -14,20 +14,37 @@ public class RaceManager : MonoBehaviour
     public GameObject gameOver;
     public GameObject pressPlay;
 
+
+    public  GameObject starOne;
+    public  GameObject starTwo;
+    public  GameObject medalOne;
+    public  GameObject medalTwo;
+    public GameObject winner;
+    public  GameObject winScreen;
+    public GameObject banner;
+
     public AudioSource batwings;
 
 
     private void Awake()
     {
+        starOne.SetActive(false);
+        starTwo.SetActive(false);
+        medalOne.SetActive(false);
+        medalTwo.SetActive(false);
+        winner.SetActive(false);
+        winScreen.SetActive(false);
+        banner.SetActive(false);
+
         Application.targetFrameRate = 60;
         gameOver.SetActive(false);
         Pause();
 
-        
-
         originalPos = player.transform.position;
 
         AudioSource batwings = GetComponent<AudioSource>();
+
+
     }
 
     public void Play()
@@ -38,6 +55,14 @@ public class RaceManager : MonoBehaviour
         returnToMenu.SetActive(false);
         gameOver.SetActive(false);
         pressPlay.SetActive(false);
+
+        starOne.SetActive(false);
+        starTwo.SetActive(false);
+        medalOne.SetActive(false);
+        medalTwo.SetActive(false);
+        winner.SetActive(false);
+        winScreen.SetActive(false);
+        banner.SetActive(false);
 
         Time.timeScale = 1f;
         player.enabled = true;
@@ -50,6 +75,9 @@ public class RaceManager : MonoBehaviour
         {
             Destroy(runningEnemy[i].gameObject);
         }*/
+
+
+
     }
 
     public void Pause()
@@ -58,6 +86,8 @@ public class RaceManager : MonoBehaviour
         player.enabled = false;
 
         batwings.Stop();
+
+
     }
 
     public void GameOver()
@@ -70,5 +100,24 @@ public class RaceManager : MonoBehaviour
         player.transform.position = originalPos;
 
         Pause();
+    }
+
+    public void WinGame ()
+    {
+        starOne.SetActive(true);
+        starTwo.SetActive(true);
+        medalOne.SetActive(true);
+        medalTwo.SetActive(true);
+        winner.SetActive(true);
+        winScreen.SetActive(true);
+        banner.SetActive(true);
+        returnToMenu.SetActive(true);
+        playButton.SetActive(true);
+
+        //palauttaa pelaajan alkuperäiseen kohtaan
+        player.transform.position = originalPos;
+
+        Pause();
+
     }
 }

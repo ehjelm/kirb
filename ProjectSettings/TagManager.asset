@@ -11,6 +11,8 @@ TagManager:
   - SWMScoring
   - Swim
   - Fly
+  - Goal
+  - Despawn
   layers:
   - Default
   - TransparentFX

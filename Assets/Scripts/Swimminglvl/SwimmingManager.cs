@@ -17,6 +17,10 @@ public class SwimmingManager : MonoBehaviour
     private int score;
     public int swimmingScore;
 
+    public AudioSource batwings;
+    public AudioSource scoreSound;
+    public AudioSource loseSound;
+
 
     private void Awake()
     {
@@ -26,6 +30,10 @@ public class SwimmingManager : MonoBehaviour
 
         swimmingScore = PlayerPrefs.GetInt("swimmingScore");
         foreverScore.text = swimmingScore.ToString();
+
+        AudioSource batwings = GetComponent<AudioSource>();
+        AudioSource scoreSound = GetComponent<AudioSource>();
+        AudioSource loseSound = GetComponent<AudioSource>();
 
     }
 
@@ -41,6 +49,9 @@ public class SwimmingManager : MonoBehaviour
 
         Time.timeScale = 1f;
         player.enabled = true;
+
+
+        batwings.Play();
 
         //tuohaa näkyvillä olevat putket kun peli alkaa
         Pipes[] pipes = FindObjectsOfType<Pipes>();
@@ -58,7 +69,7 @@ public class SwimmingManager : MonoBehaviour
         Time.timeScale = 0f;
         player.enabled = false;
 
-
+        batwings.Stop();
     }
 
 
@@ -72,6 +83,8 @@ public class SwimmingManager : MonoBehaviour
 
         Pause();
 
+        loseSound.Play();
+
         
     }
 
@@ -80,6 +93,8 @@ public class SwimmingManager : MonoBehaviour
         score++;
         
         scoreText.text = score.ToString();
+
+        scoreSound.Play();
 
         
     }

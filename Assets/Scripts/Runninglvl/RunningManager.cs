@@ -16,10 +16,14 @@ public class RunningManager : MonoBehaviour
     public GameObject pressPlay;
     public Text foreverScore;
 
+    public GameObject ohjeet;
+    public GameObject paneeli;
+
     public int score;
     public int runningScore;
 
     public AudioSource batwings;
+    public AudioSource loseSound;
 
 
     private void Awake()
@@ -34,6 +38,7 @@ public class RunningManager : MonoBehaviour
         originalPos = player.transform.position;
 
         AudioSource batwings = GetComponent<AudioSource>();
+        AudioSource loseSound = GetComponent<AudioSource>();
     }
 
     public void Play()
@@ -45,6 +50,9 @@ public class RunningManager : MonoBehaviour
         returnToMenu.SetActive(false);
         gameOver.SetActive(false);
         pressPlay.SetActive(false);
+
+        ohjeet.SetActive(false);
+        paneeli.SetActive(false);
 
         Time.timeScale = 1f;
         player.enabled = true;
@@ -77,6 +85,8 @@ public class RunningManager : MonoBehaviour
         player.transform.position = originalPos;
 
         Pause();
+
+        loseSound.Play();
     }
 
     public void IncreaseScore()

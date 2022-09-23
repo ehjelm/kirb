@@ -9,7 +9,6 @@ public class RaceFly : MonoBehaviour
     private Vector2 moveV;
     public float speed;
 
-    public AudioSource scoreFX;
     public AudioSource lose;
 
     void Start()
@@ -45,6 +44,10 @@ public class RaceFly : MonoBehaviour
             FindObjectOfType<RaceManager>().GameOver();
 
             lose.Play();
+        }
+        else if (other.gameObject.tag == "Goal")
+        {
+            FindObjectOfType<RaceManager>().WinGame();
         }
     }
 }

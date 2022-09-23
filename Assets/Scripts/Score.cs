@@ -15,15 +15,7 @@ public class Score : MonoBehaviour
     public int runningScore;
 
     public GameObject resetButton;
-    
-
-    public Slider slider;
-
-    private void Awake()
-    {
-        slider = gameObject.GetComponent<Slider>();
-        
-    }
+   
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +28,8 @@ public class Score : MonoBehaviour
 
         runningScore = PlayerPrefs.GetInt("runningScore");
         runningScoreText.text = runningScore.ToString();
+
+        
 
     }
 
@@ -54,6 +48,8 @@ public class Score : MonoBehaviour
         runningScore = 0;
         runningScoreText.text = runningScore.ToString();
         PlayerPrefs.SetInt("runningScore", 0);
+
+
 
 
     }
