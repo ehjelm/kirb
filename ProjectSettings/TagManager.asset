@@ -13,6 +13,8 @@ TagManager:
   - Fly
   - Goal
   - Despawn
+  - static
+  - Run
   layers:
   - Default
   - TransparentFX

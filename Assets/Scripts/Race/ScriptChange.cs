@@ -6,13 +6,18 @@ public class ScriptChange : MonoBehaviour
 {
     public Rigidbody2D rb;
 
+
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.mass = 1f;
         rb.gravityScale = 1f;
         rb.angularDrag = 0.05f;
+
+        
     }
+
+
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -31,6 +36,15 @@ public class ScriptChange : MonoBehaviour
             GetComponent<RaceFly>().enabled = true;
             //rb.isKinematic = true;
             
+        }
+        else if (other.gameObject.tag == "Run")
+        {
+            GetComponent<RaceRun>().enabled = true;
+            GetComponent<RaceSwim>().enabled = false;
+            GetComponent<RaceFly>().enabled = false;
+            rb.mass = 1f;
+            rb.gravityScale = 1f;
+            rb.angularDrag = 0.05f;
         }
     }
 }

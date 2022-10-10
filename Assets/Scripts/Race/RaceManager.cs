@@ -25,6 +25,9 @@ public class RaceManager : MonoBehaviour
 
     public AudioSource batwings;
 
+    public GameObject kamera;
+    
+
 
     private void Awake()
     {
@@ -43,7 +46,6 @@ public class RaceManager : MonoBehaviour
         originalPos = player.transform.position;
 
         AudioSource batwings = GetComponent<AudioSource>();
-
 
     }
 
@@ -68,6 +70,8 @@ public class RaceManager : MonoBehaviour
         player.enabled = true;
 
         batwings.Play();
+
+        kamera.transform.position = originalPos;
 
         /*RunningEnemy[] runningEnemy = FindObjectsOfType<RunningEnemy>();
 
@@ -98,6 +102,7 @@ public class RaceManager : MonoBehaviour
 
         //palauttaa pelaajan alkuperäiseen kohtaan
         player.transform.position = originalPos;
+        
 
         Pause();
     }

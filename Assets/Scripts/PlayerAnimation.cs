@@ -8,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour
     public Sprite[] sprites;
     private int spriteIndex;
 
+    public float animationSpeed = 0.23f;
 
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(AnimateSprite), 0.23f, 0.23f);
+        InvokeRepeating(nameof(AnimateSprite), animationSpeed, animationSpeed);
     }
 
     private void Update()
@@ -29,6 +30,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+
     }
 
     private void AnimateSprite()
